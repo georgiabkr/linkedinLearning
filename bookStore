@@ -1,0 +1,50 @@
+const bookData = {
+    title: 'Pride and Prejudice',
+    author: 'Emily Bronté',
+    quantity: 3,
+    edition: 4
+}
+
+const comicBookData = {
+    title: 'Spiderman',
+    author: 'Stan Lee',
+    quantity: 3,
+    graphicArtist: 'Todd McFarlane'
+}
+
+// Your code goes here
+
+// define book class - parent class
+function Book(title, author, quantity, edition) {
+    this.title = title;
+    this.author = author;
+    this.quantity = quantity;
+    this.edition = edition;
+}
+
+Object.defineProperty(Book, "setEdition", {
+    // setter to update edition property
+    set: function(newEdition) {
+        this.edition = newEdition;
+    }
+});
+
+Book.prototype.sell = function() {
+    // decrease stock by 1 if available
+    if (this.quantity > 0) {
+        this.quantity -= 1;
+    }
+}
+
+// define comic book class that inherits from book
+function ComicBook(title, author, quantity, graphicArtist) {
+    // call parent with required parameters
+    Book.call(this, title, author, quantity);
+    this.graphicArtist = graphicArtist
+}
+
+ComicBook.prototype = Object.create(Book.prototype, {
+    constructor: {
+        value: ComicBook
+    }
+});

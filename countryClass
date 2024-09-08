@@ -16,7 +16,7 @@ class Country {
       }
 
     getOverview() {
-        return '${this.name} is a country in ${this.continent}. Its currency is ${this.currency} and it has a current population of ${this.population} people.';
+        return `${this.name} is a country in ${this.continent}. Its currency is ${this.currency} and it has a current population of ${this.population} people.`;
     }
 
     setPopulation(newPopulation) {
